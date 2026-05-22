@@ -677,18 +677,53 @@ function submitForm(){
   var fn=(document.getElementById('fName')||{}).value||'',ln=(document.getElementById('lName')||{}).value||'',em=(document.getElementById('email')||{}).value||'',ph=(document.getElementById('phone')||{}).value||'',co=(document.getElementById('company')||{}).value||'',rev=(document.getElementById('revenue')||{}).value||'';
   var web=(document.getElementById('website')||{}).value||'';if(!fn.trim()||!ln.trim()||!em.trim()||!co.trim()||!rev||!web.trim()){alert('Please fill in all required fields.');return;}
   var phRaw=ph.replace(/[^\d]/g,'');if(phRaw.length===11&&phRaw[0]==='1')phRaw=phRaw.slice(1);if(phRaw.length<10){var pi=document.getElementById('phone');if(pi)pi.classList.add('err');var hi=document.getElementById('phoneHint');if(hi){hi.textContent='Please enter a valid 10-digit number';hi.className='field-hint err';}return;}
+
+  // ── GOOGLE SHEETS INTEGRATION ──
+  // Paste your Apps Script Web App URL below (step 4 of the guide)
+  var SHEET_URL = 'https://script.google.com/macros/s/AKfycbxylzVG5jFyuU2G6KkqcMLeRY_Qddrip2C2xzU9J6ZdG6AdUzRcYuHD8fEmTLPdMjRX0A/exec';
+
+  var keys=Object.keys(sel).filter(function(k){return sel[k];});
+  var challengeLabels=keys.map(function(k){return LABELS[k];}).join(', ')||'General marketing';
+  var auto=[].slice.call(document.querySelectorAll('.svc-pill.auto')).map(function(b){return b.textContent.trim();});
+  var services=auto.join(', ');
+  var goals=(document.getElementById('goals')||{}).value||'';
+  var prod=(document.getElementById('product')||{}).value||'';
+
+  var payload={
+    timestamp: new Date().toISOString(),
+    firstName: fn.trim(),
+    lastName: ln.trim(),
+    email: em.trim(),
+    phone: ph.trim(),
+    company: co.trim(),
+    revenue: rev,
+    website: web.trim(),
+    product: prod.trim(),
+    challenges: challengeLabels,
+    services: services,
+    goals: goals.trim()
+  };
+
+  if(SHEET_URL !== 'YOUR_APPS_SCRIPT_URL_HERE'){
+    fetch(SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(payload)
+    }).catch(function(err){ console.warn('Sheet error:', err); });
+  }
+
   document.getElementById('tyName').textContent=fn.trim();
   document.getElementById('tyCompany').textContent=co.trim();
   document.getElementById('tyContact').textContent=fn.trim()+' '+ln.trim();
-  var keys=Object.keys(sel).filter(function(k){return sel[k];});
-  document.getElementById('tyChallenges').textContent=keys.map(function(k){return LABELS[k];}).join(', ')||'General marketing';
-  var auto=[].slice.call(document.querySelectorAll('.svc-pill.auto')).map(function(b){return b.textContent;});
+  document.getElementById('tyChallenges').textContent=challengeLabels;
   document.getElementById('tyServices').textContent=auto.slice(0,3).join(', ')+(auto.length>3?', …':'');
   document.getElementById('formFlow').style.display='none';
   document.getElementById('tyState').style.display='block';
   document.querySelector('.right').scrollTop=0;
   runTimeline();
 }
+
 // ── ON-LOAD ANIMATIONS ──
 window.addEventListener('DOMContentLoaded', function(){
 
