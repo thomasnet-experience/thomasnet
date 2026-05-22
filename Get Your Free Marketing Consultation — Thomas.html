@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Get Your Free Marketing Consultation — Thomas</title>
+<link rel="icon" type="image/png" href="https://www.thomasnet.com/favicon.ico">
+<link rel="shortcut icon" href="https://www.thomasnet.com/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#01334D;--blue:#0073CF;--blue10:#e8f4fd;
+  --teal:#00A99D;--border:#e2e8f0;
+  --text:#1a1a2e;--muted:#6b7280;--bg:#f8fafc;--white:#fff;
+  --shadow:0 2px 12px rgba(1,51,77,.10);
+  --shadow-lg:0 8px 32px rgba(1,51,77,.14);
+}
+html,body{height:100%;overflow:hidden;font-size:15px}
+body{font-family:'Source Sans 3',sans-serif;color:var(--text);background:var(--white);line-height:1.5}
+a{text-decoration:none;color:inherit}
+
+/* ── SHELL ── */
+.shell{display:flex;flex-direction:column;height:100vh}
+
+/* ── NAV ── */
+.nav{background:var(--navy);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 36px;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.2);z-index:10}
+.nav img{height:32px;display:block}
+.nav-tagline{color:rgba(255,255,255,.4);font-size:13px;font-weight:400}
+
+/* ── PAGE GRID ── */
+.page{display:grid;grid-template-columns:45% 55%;flex:1;overflow:hidden;min-height:0}
+
+/* ══ LEFT ══ */
+.left{
+  padding:32px 40px 28px;
+  display:flex;flex-direction:column;
+  overflow:hidden;
+  height:100%;
+  gap:20px;
+  position:relative;
+  background:
+    linear-gradient(160deg, rgba(1,51,77,.82) 0%, rgba(1,40,62,.78) 100%),
+    url('https://images.pexels.com/photos/3862129/pexels-photo-3862129.jpeg?auto=compress&cs=tinysrgb&w=900') center/cover no-repeat;
+}
+.left-bg{display:none}
+
+.eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(0,169,157,.25);border:1px solid rgba(0,169,157,.45);color:#4dd9c0;padding:4px 11px;border-radius:3px;font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;width:fit-content}
+
+.left h1{font-family:'Merriweather',serif;font-size:34px;font-weight:900;color:#fff;line-height:1.2;letter-spacing:-.5px}
+.left h1 span{color:var(--teal)}
+
+.left-intro{font-size:15px;color:rgba(255,255,255,.58);line-height:1.65}
+.left-intro strong{color:rgba(255,255,255,.85);font-weight:600}
+
+/* Stats row */
+.left-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.18);border-radius:8px;overflow:hidden}
+.lstat{padding:12px 10px;background:transparent;text-align:center}
+.lstat strong{display:block;font-family:'Merriweather',serif;font-size:22px;font-weight:900;color:#fff;margin-bottom:2px}
+.lstat span{font-size:12px;color:rgba(255,255,255,.5);line-height:1.3}
+
+/* ── HORIZONTAL ROADMAP ── */
+.rm-label{font-size:12px;font-weight:700;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:12px}
+
+.roadmap{display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr;align-items:stretch;gap:0}
+
+.rm-step-card{padding:14px 16px;background:rgba(255,255,255,.08);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.18);border-radius:8px;position:relative;display:flex;flex-direction:column;gap:4px}
+.rm-step-card:hover{background:rgba(255,255,255,.13);border-color:rgba(0,169,157,.5)}
+
+.rm-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0}
+.rm-num-1{background:var(--blue)}
+.rm-num-2{background:var(--teal)}
+.rm-num-3{background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.2)}
+
+.rm-timing{font-size:11px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.6px}
+.rm-title{font-size:15px;font-weight:700;color:#fff;line-height:1.25;font-family:'Merriweather',serif;letter-spacing:-.1px}
+.rm-desc{font-size:12.5px;color:rgba(255,255,255,.5);line-height:1.5;flex:1}
+.rm-badge{display:inline-block;background:rgba(0,169,157,.15);border:1px solid rgba(0,169,157,.25);color:#4dd9c0;font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:3px;margin-top:auto;width:fit-content}
+
+.rm-arrow{display:flex;align-items:center;justify-content:center;padding-bottom:8px}
+.rm-arrow svg{opacity:.3}
+
+/* ══ RIGHT ══ */
+.right{
+  background:var(--bg);
+  padding:28px 44px 32px;
+  overflow-y:auto;
+  height:100%;
+}
+.right::-webkit-scrollbar{width:4px}
+.right::-webkit-scrollbar-track{background:transparent}
+.right::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
+/* Form header */
+.form-header{margin-bottom:18px}
+.form-header h2{font-family:'Merriweather',serif;font-size:19px;font-weight:900;color:var(--navy);margin-bottom:4px}
+.form-header p{font-size:14px;color:var(--muted);line-height:1.5}
+
+/* Progress */
+.prog-bar{display:flex;align-items:center;gap:6px;margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--border)}
+.prog-step{display:flex;align-items:center;gap:5px;font-size:12.5px;color:var(--muted);font-weight:500;white-space:nowrap}
+.prog-dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;color:var(--muted);transition:.25s;flex-shrink:0}
+.prog-step.active .prog-dot{background:var(--blue);border-color:var(--blue);color:#fff}
+.prog-step.active{color:var(--navy);font-weight:700}
+.prog-step.done .prog-dot{background:var(--teal);border-color:var(--teal);color:#fff}
+.prog-line{flex:1;height:2px;background:var(--border);transition:.4s}
+.prog-line.done{background:var(--teal)}
+
+/* Form sections */
+.form-sec{display:none}
+.form-sec.active{display:block}
+
+/* Step labels */
+.step-label{font-size:11.5px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;display:flex;align-items:center;gap:5px}
+.step-label::before{content:'';width:14px;height:2px;background:var(--teal);display:inline-block}
+.step-q{font-family:'Merriweather',serif;font-size:19px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.step-hint{font-size:13.5px;color:var(--muted);margin-bottom:14px;line-height:1.45}
+
+/* Chips — 3 cols, compact */
+.chips-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:14px}
+.chip{display:flex;flex-direction:column;gap:4px;padding:10px 10px 10px 10px;border:1.5px solid var(--border);border-radius:5px;background:#fff;cursor:pointer;text-align:left;font-family:inherit;transition:.13s;position:relative}
+.chip:hover{border-color:#93c5fd;background:var(--blue10)}
+.chip-check{position:absolute;top:8px;right:8px;width:15px;height:15px;border-radius:50%;border:1.5px solid var(--border);background:#fff;transition:.13s;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.chip-ico{width:26px;height:26px;border-radius:5px;background:var(--blue10);display:flex;align-items:center;justify-content:center;transition:.13s}
+.chip-title{font-size:12.5px;font-weight:700;color:var(--navy);line-height:1.3;padding-right:16px}
+.chip-desc{font-size:11.5px;color:var(--muted);line-height:1.35}
+
+.continue-row{display:flex;align-items:center;justify-content:space-between}
+.sel-count{font-size:13.5px;color:var(--muted)}
+.sel-count strong{color:var(--navy)}
+.btn-continue{background:var(--blue);color:#fff;border:none;padding:9px 20px;border-radius:4px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px;opacity:0;pointer-events:none;transform:translateX(6px);transition:.22s}
+.btn-continue.show{opacity:1;pointer-events:auto;transform:translateX(0)}
+.btn-continue:hover{background:#005fa3}
+
+/* Fields — compact */
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.field{display:flex;flex-direction:column;gap:3px}
+.field label{font-size:13px;font-weight:600;color:var(--navy)}
+.req{color:#ef4444}
+.field input,.field select,.field textarea{padding:8px 11px;border:1.5px solid var(--border);border-radius:4px;font-size:14px;font-family:inherit;color:var(--text);outline:none;transition:border-color .15s,box-shadow .15s;background:#fff}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,115,207,.07)}
+.field input.valid{border-color:var(--teal)}
+.field input.err,.field input.err:focus{border-color:#ef4444;box-shadow:none}
+.field-hint{font-size:12px;color:var(--muted);margin-top:1px}
+.field-hint.err{color:#ef4444}
+.slide-in{opacity:0;transform:translateY(8px);transition:.32s;pointer-events:none}
+.slide-in.show{opacity:1;transform:translateY(0);pointer-events:auto}
+
+/* Summary badge */
+.sum-badge{display:none;align-items:center;gap:6px;flex-wrap:wrap;background:#f0fdf4;border:1px solid #86efac;border-radius:4px;padding:8px 12px;margin-bottom:14px;font-size:12px;color:#166534}
+.sum-badge.show{display:flex}
+.sum-chip{background:#dcfce7;border-radius:3px;padding:2px 6px;font-size:11px;font-weight:600;color:#166534}
+
+/* Service pills */
+.svc-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.svc-pill{padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600;border:1.5px solid var(--border);background:#fff;cursor:pointer;color:var(--muted);transition:.13s;font-family:inherit}
+.svc-pill.auto{background:var(--blue10);border-color:#93c5fd;color:var(--blue)}
+.svc-pill.auto::before{content:'✓ ';font-size:10px}
+
+/* Submit */
+.btn-submit{width:100%;padding:12px;background:var(--blue);color:#fff;border:none;border-radius:4px;font-size:15.5px;font-weight:700;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;transition:.16s}
+.btn-submit:hover{background:#005fa3;transform:translateY(-1px);box-shadow:0 5px 16px rgba(0,115,207,.25)}
+.submit-note{text-align:center;font-size:12.5px;color:var(--muted);margin-top:7px}
+
+/* ── THANK YOU ── */
+#tyState{display:none}
+.ty-hero{background:var(--navy);border-top:3px solid var(--teal);padding:36px 44px;text-align:center}
+.ty-check{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--blue));display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 0 0 7px rgba(0,169,157,.14);animation:popIn .5s cubic-bezier(.175,.885,.32,1.275)}
+@keyframes popIn{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.ty-title{font-family:'Merriweather',serif;font-size:24px;font-weight:900;color:#fff;margin-bottom:8px}
+.ty-sub{font-size:15px;color:rgba(255,255,255,.65);max-width:400px;margin:0 auto;line-height:1.6}
+.ty-sub strong{color:var(--teal)}
+.ty-body{padding:24px 44px 0;background:var(--bg)}
+.ty-sl{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:10px}
+.ty-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.ty-card{background:#fff;border:1px solid var(--border);border-radius:4px;padding:13px;animation:fadeUp .4s ease both}
+.ty-card:nth-child(2){animation-delay:.1s}.ty-card:nth-child(3){animation-delay:.2s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+.ty-card-ico{width:28px;height:28px;border-radius:4px;background:var(--blue10);border:1px solid #bfdbfe;display:flex;align-items:center;justify-content:center;margin-bottom:7px}
+.ty-card-key{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+.ty-card-val{font-size:13.5px;font-weight:600;color:var(--navy);line-height:1.35}
+
+
+
+
+
+
+
+
+
+.ti-tag{font-size:11px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.ti-title{font-size:14.5px;font-weight:700;color:var(--navy);margin-bottom:2px}
+.ti-body{font-size:13.5px;color:var(--muted);line-height:1.45}
+.ti-badge{display:inline-block;background:#fef3c7;color:#92400e;font-size:11px;font-weight:600;padding:2px 6px;border-radius:3px;margin-top:3px}
+
+
+.ty-cases h3{font-family:'Merriweather',serif;font-size:15px;font-weight:700;color:var(--navy);margin-bottom:12px}
+
+
+
+
+
+
+
+.case-body strong{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:1px}
+.case-body span{font-size:12px;color:var(--muted)}
+.case-body em{display:block;font-style:normal;font-size:12.5px;font-weight:700;color:var(--blue);margin-top:3px}
+.ty-foot{opacity:0;transition:opacity .5s;padding:12px 44px 20px;background:var(--bg);border-top:1px solid var(--border);text-align:center}
+.ty-foot.show{opacity:1}
+.ty-foot p{font-size:13px;color:var(--muted)}
+.ty-foot a{color:var(--blue);font-weight:600}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="https://www.thomasnet.com" target="_blank" rel="noopener">
+    <img src="https://cdn.thomasnet.com/img/thomas-logo.svg" alt="Thomas®" style="height:32px;display:block">
+  </a>
+
+</nav>
+
+<div class="page">
+
+<!-- ══ LEFT ══ -->
+<div class="left">
+  <div class="left-bg"></div>
+
+  <h1>Your product deserves<br>to be <span>found.</span></h1>
+
+  <p class="left-intro">
+    You've built something exceptional. The problem isn't your product —
+    <strong>it's that the right buyers can't find it.</strong>
+    For 125+ years, Thomas has helped manufacturers close that gap with marketing built for how engineers and procurement teams actually search and source.
+  </p>
+
+  <div class="left-stats">
+    <div class="lstat"><strong id="sn1">125+</strong><span>Years in industrial marketing</span></div>
+    <div class="lstat"><strong id="sn2">500K+</strong><span>Verified buyers on platform</span></div>
+    <div class="lstat"><strong id="sn3">3×</strong><span>Avg. lead increase</span></div>
+  </div>
+
+  <!-- HORIZONTAL ROADMAP -->
+  <div>
+    <div class="rm-label">How it works</div>
+    <div class="roadmap">
+
+      <div class="rm-step-card rm-anim" style="opacity:0;transform:translateY(14px);transition:opacity .55s .5s,transform .55s .5s">
+        <div class="rm-num rm-num-1">1</div>
+        <div class="rm-timing">Now · 2 min</div>
+        <div class="rm-title">Tell us your challenges</div>
+      </div>
+
+      <div class="rm-arrow">
+        <svg width="18" height="18" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+
+      <div class="rm-step-card rm-anim" style="opacity:0;transform:translateY(14px);transition:opacity .55s .75s,transform .55s .75s">
+        <div class="rm-num rm-num-2">2</div>
+        <div class="rm-timing">Within 1 business day</div>
+        <div class="rm-title">Talk with a strategist</div>
+      </div>
+
+      <div class="rm-arrow">
+        <svg width="18" height="18" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+
+      <div class="rm-step-card rm-anim" style="opacity:0;transform:translateY(14px);transition:opacity .55s 1s,transform .55s 1s">
+        <div class="rm-num rm-num-3">3</div>
+        <div class="rm-timing">After the call</div>
+        <div class="rm-title">Get your growth plan</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══ RIGHT ══ -->
+<div class="right">
+
+  <div id="formFlow">
+    <div class="form-header">
+      <h2>Tell us about your business</h2>
+      <p>A Thomas strategist will review your answers and build a personalized growth plan — no pitch, no obligation.</p>
+    </div>
+
+    <div class="prog-bar">
+      <div class="prog-step active" id="ps1"><div class="prog-dot">1</div>Challenge</div>
+      <div class="prog-line" id="pl1"></div>
+      <div class="prog-step" id="ps2"><div class="prog-dot">2</div>About you</div>
+      <div class="prog-line" id="pl2"></div>
+      <div class="prog-step" id="ps3"><div class="prog-dot">3</div>Focus</div>
+      <div class="prog-line" id="pl3"></div>
+      <div class="prog-step" id="ps4"><div class="prog-dot">✓</div>Submit</div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="form-sec active" id="sec1">
+      <div class="step-label">Step 1 of 3</div>
+      <div class="step-q">What's holding your company back?</div>
+      <p class="step-hint">Select all that apply — we'll tailor your recommendations.</p>
+      <div class="chips-grid">
+        <button class="chip" type="button" data-key="rfq" onclick="chipClick(this)">
+          <div class="chip-check"></div>
+          <div class="chip-ico"><svg width="13" height="13" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+          <div class="chip-title">Not enough RFQs</div>
+          <div class="chip-desc">Too few qualified quote requests</div>
+        </button>
+        <button class="chip" type="button" data-key="seo" onclick="chipClick(this)">
+          <div class="chip-check"></div>
+          <div class="chip-ico"><svg width="13" height="13" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
+          <div class="chip-title">Buyers can't find us</div>
+          <div class="chip-desc">Not appearing in buyer searches</div>
+        </button>
+        <button class="chip" type="button" data-key="web" onclick="chipClick(this)">
+          <div class="chip-check"></div>
+          <div class="chip-ico"><svg width="13" height="13" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <div class="chip-title">Website is outdated</div>
+          <div class="chip-desc">Doesn't convert visitors to RFQs</div>
+        </button>
+        <button class="chip" type="button" data-key="leads" onclick="chipClick(this)">
+          <div class="chip-check"></div>
+          <div class="chip-ico"><svg width="13" height="13" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+          <div class="chip-title">No lead system</div>
+          <div class="chip-desc">We rely on referrals only</div>
+        </button>
+        <button class="chip" type="button" data-key="brand" onclick="chipClick(this)">
+          <div class="chip-check"></div>
+          <div class="chip-ico"><svg width="13" height="13" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <div class="chip-title">Need brand awareness</div>
+          <div class="chip-desc">Buyers don't know we exist</div>
+        </button>
+        <button class="chip" type="button" data-key="data" onclick="chipClick(this)">
+          <div class="chip-check"></div>
+          <div class="chip-ico"><svg width="13" height="13" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
+          <div class="chip-title">No visibility into who's looking</div>
+          <div class="chip-desc">Can't see who views our profile</div>
+        </button>
+        <button class="chip" type="button" data-key="nurture" onclick="chipClick(this)">
+          <div class="chip-check"></div>
+          <div class="chip-ico"><svg width="13" height="13" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <div class="chip-title">Can't nurture prospects</div>
+          <div class="chip-desc">No system to stay top-of-mind</div>
+        </button>
+        <button class="chip" type="button" data-key="announce" onclick="chipClick(this)">
+          <div class="chip-check"></div>
+          <div class="chip-ico"><svg width="13" height="13" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg></div>
+          <div class="chip-title">Can't reach the market</div>
+          <div class="chip-desc">No way to announce new capabilities</div>
+        </button>
+        <button class="chip" type="button" data-key="thought" onclick="chipClick(this)">
+          <div class="chip-check"></div>
+          <div class="chip-ico"><svg width="13" height="13" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></div>
+          <div class="chip-title">Not seen as expert</div>
+          <div class="chip-desc">Buyers don't view us as authority</div>
+        </button>
+      </div>
+      <div class="continue-row">
+        <span class="sel-count" id="selCount">Select at least one to continue</span>
+        <button class="btn-continue" id="btnContinue" onclick="goToSec2()">
+          Continue <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="form-sec" id="sec2">
+      <div class="sum-badge" id="sumBadge">
+        <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        <span id="sumChips"></span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+        <button onclick="goBack()" style="display:flex;align-items:center;gap:5px;background:none;border:1.5px solid var(--border);color:var(--muted);padding:6px 12px;border-radius:4px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s" onmouseover="this.style.borderColor='var(--blue)';this.style.color='var(--blue)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Back to challenges
+        </button>
+        <div class="step-label" style="margin-bottom:0">Step 2 of 3</div>
+      </div>
+      <div class="step-q" style="margin-bottom:14px">Tell us about yourself</div>
+      <div class="field-row">
+        <div class="field"><label>First Name <span class="req">*</span></label><input type="text" id="fName" placeholder="John" oninput="checkName()"></div>
+        <div class="field"><label>Last Name <span class="req">*</span></label><input type="text" id="lName" placeholder="Smith" oninput="checkName()"></div>
+      </div>
+      <div class="slide-in" id="sgEmail">
+        <div class="field-row">
+          <div class="field"><label>Work Email <span class="req">*</span></label><input type="email" id="email" placeholder="john@company.com" oninput="checkEmail()"></div>
+          <div class="field"><label>Phone <span class="req">*</span></label><input type="text" id="phone" placeholder="(555) 123-4567" oninput="validatePhone(this)" onblur="fmtPhoneBlur(this)" maxlength="16" autocomplete="one-time-code" data-lpignore="true" spellcheck="false"><span class="field-hint" id="phoneHint"></span></div>
+        </div>
+      </div>
+      <div class="slide-in" id="sgCompany">
+        <div class="field-row">
+          <div class="field"><label>Company Name <span class="req">*</span></label><input type="text" id="company" placeholder="Acme Manufacturing Co." oninput="checkCompany()"></div>
+          <div class="field"><label>Annual Revenue <span class="req">*</span></label>
+            <select id="revenue" onchange="checkCompany()">
+              <option value="">Select range</option>
+              <option>Under $1M</option><option>$1M – $5M</option>
+              <option>$5M – $25M</option><option>$25M – $100M</option><option>$100M+</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="slide-in" id="sgExtra">
+        <div class="field-row">
+          <div class="field"><label>What do you sell? <span class="req">*</span></label><input type="text" id="product" placeholder="e.g. CNC machined aluminum parts..." onblur="checkExtra()"></div>
+          <div class="field"><label>Company website <span class="req">*</span></label><input type="url" id="website" placeholder="https://yourcompany.com" oninput="checkWebsite()"></div>
+        </div>
+        <!-- Next button — appears when product + website filled -->
+        <div style="display:flex;justify-content:flex-end;margin-top:4px">
+          <button id="btnNextStep3" class="btn-continue" type="button" onclick="goToSec3()">
+            Next <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="form-sec" id="sec3">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+        <button onclick="goBackToSec2()" style="display:flex;align-items:center;gap:5px;background:none;border:1.5px solid var(--border);color:var(--muted);padding:6px 12px;border-radius:4px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s" onmouseover="this.style.borderColor='var(--blue)';this.style.color='var(--blue)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Back to your info
+        </button>
+        <div class="step-label" style="margin-bottom:0">Step 3 of 3</div>
+      </div>
+      <div class="step-q" style="margin-bottom:2px;font-size:18px">Almost there</div>
+      <p class="step-hint" style="margin-bottom:12px">Review your services and share your goals — then submit.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;align-items:start">
+
+        <!-- Left: goals -->
+        <div style="background:#fff;border:1.5px solid var(--border);border-radius:6px;overflow:hidden;height:100%">
+          <div style="padding:9px 13px 7px;border-bottom:1px solid var(--border);background:var(--bg)">
+            <div style="font-size:12px;font-weight:700;color:var(--navy);font-family:'Merriweather',serif">What would success look like for you this year?</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:1px">Goals · past marketing · ideal customer</div>
+          </div>
+          <textarea id="goals" style="resize:none;padding:10px 13px;border:none;font-size:13px;font-family:inherit;outline:none;width:100%;line-height:1.6;color:var(--text);display:block;background:#fff;min-height:120px" placeholder="e.g. We want to triple RFQs from Tier 1 automotive OEMs. We tried Google Ads — didn't work. Our ideal buyer is a procurement manager at a Tier 1 supplier..." maxlength="600" oninput="updChar(this)"></textarea>
+          <div style="display:flex;justify-content:space-between;padding:5px 12px 6px;border-top:1px solid var(--border);background:var(--bg)">
+            <span style="font-size:10.5px;color:var(--muted)">Optional — more detail = better consultation</span>
+            <span style="font-size:10.5px;color:var(--muted)" id="charCount">0 / 600</span>
+          </div>
+        </div>
+
+        <!-- Right: services -->
+        <div style="background:#fff;border:1.5px solid var(--border);border-radius:6px;overflow:hidden;height:100%">
+          <div style="padding:9px 13px 7px;border-bottom:1px solid var(--border);background:var(--bg)">
+            <div style="font-size:12px;font-weight:700;color:var(--navy)">Recommended services</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:1px">Tap to deselect any that don't apply</div>
+          </div>
+          <div style="padding:10px 12px">
+            <div class="svc-pills" id="svcPills"></div>
+          </div>
+        </div>
+
+      </div>
+      <button class="btn-submit" onclick="submitForm()">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        Submit — Get My Free Consultation
+      </button>
+      <p class="submit-note" style="margin-top:6px">No commitment · Response within 1 business day</p>
+    </div>
+  </div>
+
+  <!-- THANK YOU -->
+  <div id="tyState">
+
+    <!-- Hero confirmation -->
+    <div class="ty-hero">
+      <div class="ty-check"><svg width="24" height="24" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="ty-title">You're all set, <span id="tyName">there</span>!</div>
+      <p class="ty-sub">One of our experts will reach out within <strong>1 business day</strong> to build a personalized growth plan for <strong id="tyCompany">your company</strong>.</p>
+    </div>
+
+    <!-- Summary + Next steps side by side -->
+    <div style="padding:28px 44px 0;background:var(--bg)">
+
+      <!-- Submission summary strip -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px">
+        <div class="ty-card"><div class="ty-card-ico"><svg width="14" height="14" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="ty-card-key">Contact</div><div class="ty-card-val" id="tyContact">—</div></div>
+        <div class="ty-card"><div class="ty-card-ico"><svg width="14" height="14" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/></svg></div><div class="ty-card-key">Challenges</div><div class="ty-card-val" id="tyChallenges">—</div></div>
+        <div class="ty-card"><div class="ty-card-ico"><svg width="14" height="14" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div><div class="ty-card-key">Services</div><div class="ty-card-val" id="tyServices">—</div></div>
+      </div>
+
+      <!-- What happens next — horizontal roadmap (mirrors left panel style) -->
+      <p class="ty-sl" style="margin-bottom:14px">What happens next</p>
+      <div style="display:grid;grid-template-columns:1fr 24px 1fr 24px 1fr;align-items:stretch;gap:0;margin-bottom:24px">
+
+        <div class="ti" id="ti1" style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:4px;opacity:0;transform:translateY(10px);transition:opacity .5s,transform .5s">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--blue10);border:2px solid var(--blue);display:flex;align-items:center;justify-content:center;margin-bottom:6px" id="td1">
+            <svg width="14" height="14" fill="none" stroke="var(--blue)" stroke-width="2.5" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+          <div style="font-size:10px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.6px">Within 1 business day</div>
+          <div style="font-size:13.5px;font-weight:700;color:var(--navy);font-family:'Merriweather',serif;line-height:1.3">Strategist assigned</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.5;flex:1">A Thomas specialist reviews your submission and researches your company before reaching out.</div>
+          <div style="display:inline-block;background:#fef3c7;color:#92400e;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:3px;margin-top:4px;width:fit-content">⏱ Personalized — not templated</div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:center">
+          <svg width="16" height="16" fill="none" stroke="var(--border)" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+
+        <div class="ti" id="ti2" style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:4px;opacity:0;transform:translateY(10px);transition:opacity .5s .15s,transform .5s .15s">
+          <div style="width:32px;height:32px;border-radius:50%;background:#e6f9f7;border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;margin-bottom:6px" id="td2">
+            <svg width="14" height="14" fill="none" stroke="var(--teal)" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.9 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div style="font-size:10px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.6px">At your convenience</div>
+          <div style="font-size:13.5px;font-weight:700;color:var(--navy);font-family:'Merriweather',serif;line-height:1.3">Free 30-min discovery call</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.5;flex:1">Your goals, your challenges, your competitive landscape — no pitch. Just listening first.</div>
+          <div style="display:inline-block;background:#e6f9f7;color:#065f46;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:3px;margin-top:4px;width:fit-content">📅 No pressure · your schedule</div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:center">
+          <svg width="16" height="16" fill="none" stroke="var(--border)" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+
+        <div class="ti" id="ti3" style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:4px;opacity:0;transform:translateY(10px);transition:opacity .5s .3s,transform .5s .3s">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--blue10);border:2px solid var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:6px" id="td3">
+            <svg width="14" height="14" fill="none" stroke="var(--navy)" stroke-width="2.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <div style="font-size:10px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.6px">100% personalized</div>
+          <div style="font-size:13.5px;font-weight:700;color:var(--navy);font-family:'Merriweather',serif;line-height:1.3">Your custom growth plan</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.5;flex:1">A tailored marketing roadmap with clear KPIs and expected outcomes — built for your company specifically.</div>
+          <div style="display:inline-block;background:var(--blue10);color:var(--blue);font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:3px;margin-top:4px;width:fit-content">📊 No commitment required</div>
+        </div>
+
+      </div>
+
+      <!-- Closing trust note -->
+      <div class="ty-foot show" id="tyFoot" style="padding:0;margin-bottom:24px;border:none;background:transparent;text-align:left;opacity:0;transition:opacity .7s .5s">
+        <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-left:3px solid var(--teal);border-radius:4px">
+          <svg width="18" height="18" fill="none" stroke="var(--teal)" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <div>
+            <div style="font-size:12.5px;font-weight:700;color:var(--navy)">Your information is safe with us.</div>
+            <div style="font-size:11.5px;color:var(--muted)">No spam. No third-party sharing. A real human will reach out — once. <a href="thomasnet_home.html" style="color:var(--blue);font-weight:600">Back to homepage →</a></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div><!-- /right -->
+</div><!-- /page -->
+</div><!-- /shell -->
+
+<script>
+var sel={};
+var eShown=false,cShown=false,xShown=false,s3Shown=false;
+var LABELS={rfq:'Not enough RFQs',seo:"Buyers can't find us",web:'Outdated website',leads:'No lead system',brand:'Brand awareness',data:'No visibility',nurture:'No nurture system',announce:'No market reach',thought:'Not seen as expert'};
+var MAP={rfq:['Lead Generation','Inbound Marketing','Thomas Analytics'],seo:['SEO for Manufacturers','Content Marketing'],web:['Website Development','eCommerce & Product Data'],leads:['Lead Generation','Inbound Marketing','Thomas Analytics','Marketing Automation & Nurturing'],brand:['Video Advertising','Newsletter Advertising','Content Marketing','Market Announcements'],data:['Thomas Analytics','Lead Generation'],nurture:['Marketing Automation & Nurturing','Inbound Marketing','Thomas Analytics'],announce:['Market Announcements','Newsletter Advertising','Video Advertising'],thought:['Thomas Updates & Insights','Content Marketing','Newsletter Advertising']};
+var ALL=['SEO for Manufacturers','Website Development','Content Marketing','Lead Generation','Inbound Marketing','eCommerce & Product Data','Video Advertising','Thomas Analytics','Newsletter Advertising','Marketing Automation & Nurturing','Market Announcements','Thomas Updates & Insights'];
+
+function chipClick(el){
+  var k=el.getAttribute('data-key');sel[k]=!sel[k];var on=!!sel[k];
+  el.style.border=on?'1.5px solid var(--blue)':'1.5px solid var(--border)';
+  el.style.background=on?'var(--blue10)':'#fff';
+  var t=el.querySelector('.chip-title');if(t)t.style.color=on?'var(--blue)':'';
+  var i=el.querySelector('.chip-ico');if(i)i.style.background=on?'var(--blue)':'var(--blue10)';
+  var sv=el.querySelector('.chip-ico svg');if(sv)sv.setAttribute('stroke',on?'#fff':'var(--blue)');
+  var c=el.querySelector('.chip-check');if(c){c.style.background=on?'var(--blue)':'#fff';c.style.borderColor=on?'var(--blue)':'var(--border)';c.innerHTML=on?'<svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>':'';}
+  var n=Object.keys(sel).filter(function(x){return sel[x];}).length;
+  var cnt=document.getElementById('selCount');if(cnt)cnt.innerHTML=n===0?'Select at least one to continue':'<strong>'+n+'</strong> challenge'+(n>1?'s':'')+' selected';
+  document.getElementById('btnContinue').classList.toggle('show',n>0);
+}
+function setProg(id,cls,lbl){var e=document.getElementById(id);if(!e)return;e.className='prog-step'+(cls?' '+cls:'');e.querySelector('.prog-dot').textContent=lbl;}
+function setLine(id){var e=document.getElementById(id);if(e)e.classList.add('done');}
+function scrollRight(id){var r=document.querySelector('.right');if(r)r.scrollTop=0;if(id){var e=document.getElementById(id);if(e)setTimeout(function(){e.scrollIntoView({behavior:'smooth',block:'nearest'});},80);}}
+function goToSec2(){
+  document.getElementById('sec1').classList.remove('active');
+  document.getElementById('sec2').classList.add('active');
+  setProg('ps1','done','✓');setProg('ps2','active','2');setLine('pl1');
+  var keys=Object.keys(sel).filter(function(k){return sel[k];});
+  var sc=document.getElementById('sumChips');if(sc)sc.innerHTML=keys.map(function(k){return '<span class="sum-chip">'+(LABELS[k]||k)+'</span>';}).join(' ');
+  var sb=document.getElementById('sumBadge');if(sb)sb.classList.toggle('show',keys.length>0);
+  document.querySelector('.right').scrollTop=0;
+}
+function goBack(){
+  document.getElementById('sec2').classList.remove('active');
+  document.getElementById('sec1').classList.add('active');
+  setProg('ps1','active','1');setProg('ps2','','2');
+  document.getElementById('pl1').classList.remove('done');
+  // Reset step 2 state so fields re-reveal naturally
+  eShown=false;cShown=false;xShown=false;s3Shown=false;
+  ['sgEmail','sgCompany','sgExtra'].forEach(function(id){var e=document.getElementById(id);if(e)e.classList.remove('show');});
+  document.querySelector('.right').scrollTop=0;
+}
+function goBackToSec2(){
+  document.getElementById('sec3').classList.remove('active');
+  document.getElementById('sec2').classList.add('active');
+  setProg('ps2','active','2');setProg('ps3','','3');setProg('ps4','','✓');
+  document.getElementById('pl2').classList.remove('done');
+  document.getElementById('pl3').classList.remove('done');
+  s3Shown=false;
+  // Re-show all slide-in fields that were already filled
+  ['sgEmail','sgCompany','sgExtra'].forEach(function(id){
+    var e=document.getElementById(id);
+    if(e) e.classList.add('show'); // keep them visible since user already filled them
+  });
+  eShown=true;cShown=true;xShown=true;
+  document.querySelector('.right').scrollTop=0;
+}
+function checkName(){
+  if(eShown)return;var fn=document.getElementById('fName'),ln=document.getElementById('lName');
+  if(fn&&ln&&fn.value.trim()&&ln.value.trim()){eShown=true;var e=document.getElementById('sgEmail');if(e){e.classList.add('show');scrollRight('sgEmail');}}
+}
+function checkEmail(){
+  if(cShown)return;var v=(document.getElementById('email')||{}).value||'';
+  if(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){cShown=true;var e=document.getElementById('sgCompany');if(e){e.classList.add('show');scrollRight('sgCompany');}document.getElementById('email').classList.add('valid');}
+}
+// Phone: validate on every keystroke (no reformatting), format on blur
+function validatePhone(el){
+  var raw=el.value.replace(/\D/g,'');
+  if(raw.length===11&&raw[0]==='1') raw=raw.slice(1);
+  var hint=document.getElementById('phoneHint');
+  if(raw.length===10){
+    el.classList.add('valid');el.classList.remove('err');
+    if(hint){hint.textContent='';hint.className='field-hint';}
+  } else {
+    el.classList.remove('valid');
+    if(raw.length>0&&raw.length<10&&hint){hint.textContent=raw.length+' of 10 digits';hint.className='field-hint';}
+    else if(hint){hint.textContent='';hint.className='field-hint';}
+  }
+}
+function fmtPhoneBlur(el){
+  var raw=el.value.replace(/\D/g,'');
+  if(raw.length===11&&raw[0]==='1') raw=raw.slice(1);
+  var v=raw.slice(0,10);
+  if(v.length===0) return;
+  var fmt='('+v.slice(0,3);
+  if(v.length>=4) fmt+=') '+v.slice(3,6);
+  if(v.length>=7) fmt+='-'+v.slice(6,10);
+  else if(v.length>3) fmt+=v.slice(3);
+  el.value=fmt;
+  if(v.length===10){el.classList.add('valid');el.classList.remove('err');}
+}
+function fmtPhone(el){ validatePhone(el); } // legacy alias
+function checkCompany(){
+  if(xShown)return;var co=(document.getElementById('company')||{}).value||'',rev=(document.getElementById('revenue')||{}).value||'';
+  if(co.trim().length>=2&&rev){xShown=true;var e=document.getElementById('sgExtra');if(e){e.classList.add('show');scrollRight('sgExtra');}}
+}
+function checkExtra(){
+  // No auto-advance — just update Next button state
+  checkNextBtn();
+}
+function checkWebsite(){
+  checkNextBtn();
+}
+function checkNextBtn(){
+  var co=(document.getElementById('company')||{}).value||'';
+  var rev=(document.getElementById('revenue')||{}).value||'';
+  var prod=(document.getElementById('product')||{}).value||'';
+  var web=(document.getElementById('website')||{}).value||'';
+  var ok=co.trim().length>=2&&rev&&prod.trim().length>=2&&web.trim().length>=4;
+  var btn=document.getElementById('btnNextStep3');
+  if(btn) btn.classList.toggle('show', ok);
+}
+function goToSec3(){
+  var co=(document.getElementById('company')||{}).value||'';
+  var rev=(document.getElementById('revenue')||{}).value||'';
+  var prod=(document.getElementById('product')||{}).value||'';
+  var web=(document.getElementById('website')||{}).value||'';
+  if(!co.trim()||!rev||!prod.trim()||!web.trim()){return;}
+  s3Shown=true;
+  document.getElementById('sec2').classList.remove('active');
+  document.getElementById('sec3').classList.add('active');
+  setProg('ps2','done','\u2713');setProg('ps3','active','3');setLine('pl2');
+  buildPills();
+  document.querySelector('.right').scrollTop=0;
+  setTimeout(function(){setProg('ps3','done','\u2713');setProg('ps4','active','\u2713');setLine('pl3');},700);
+}
+function buildPills(){
+  var rec={};Object.keys(sel).filter(function(k){return sel[k];}).forEach(function(k){(MAP[k]||[]).forEach(function(s){rec[s]=true;});});
+  var c=document.getElementById('svcPills');if(!c)return;c.innerHTML='';
+  ALL.forEach(function(s){var b=document.createElement('button');b.type='button';b.className='svc-pill'+(rec[s]?' auto':'');b.textContent=s;b.onclick=function(){b.classList.toggle('auto');};c.appendChild(b);});
+}
+function updChar(el){var c=document.getElementById('charCount');if(c)c.textContent=el.value.length+' / 600';}
+function submitForm(){
+  var fn=(document.getElementById('fName')||{}).value||'',ln=(document.getElementById('lName')||{}).value||'',em=(document.getElementById('email')||{}).value||'',ph=(document.getElementById('phone')||{}).value||'',co=(document.getElementById('company')||{}).value||'',rev=(document.getElementById('revenue')||{}).value||'';
+  var web=(document.getElementById('website')||{}).value||'';if(!fn.trim()||!ln.trim()||!em.trim()||!co.trim()||!rev||!web.trim()){alert('Please fill in all required fields.');return;}
+  var phRaw=ph.replace(/[^\d]/g,'');if(phRaw.length===11&&phRaw[0]==='1')phRaw=phRaw.slice(1);if(phRaw.length<10){var pi=document.getElementById('phone');if(pi)pi.classList.add('err');var hi=document.getElementById('phoneHint');if(hi){hi.textContent='Please enter a valid 10-digit number';hi.className='field-hint err';}return;}
+  document.getElementById('tyName').textContent=fn.trim();
+  document.getElementById('tyCompany').textContent=co.trim();
+  document.getElementById('tyContact').textContent=fn.trim()+' '+ln.trim();
+  var keys=Object.keys(sel).filter(function(k){return sel[k];});
+  document.getElementById('tyChallenges').textContent=keys.map(function(k){return LABELS[k];}).join(', ')||'General marketing';
+  var auto=[].slice.call(document.querySelectorAll('.svc-pill.auto')).map(function(b){return b.textContent;});
+  document.getElementById('tyServices').textContent=auto.slice(0,3).join(', ')+(auto.length>3?', …':'');
+  document.getElementById('formFlow').style.display='none';
+  document.getElementById('tyState').style.display='block';
+  document.querySelector('.right').scrollTop=0;
+  runTimeline();
+}
+// ── ON-LOAD ANIMATIONS ──
+window.addEventListener('DOMContentLoaded', function(){
+
+  // Stat counters
+  function countUp(el, target, suffix, isFloat, duration, delay){
+    setTimeout(function(){
+      var start=0, t0=null;
+      (function tick(ts){
+        if(!t0) t0=ts;
+        var p=Math.min((ts-t0)/duration,1), e=1-Math.pow(1-p,3);
+        var v=target*e;
+        el.textContent=(isFloat?v.toFixed(1):Math.round(v))+suffix;
+        if(p<1) requestAnimationFrame(tick);
+        else el.textContent=(isFloat?target.toFixed(1):target)+suffix;
+      })(0);
+    }, delay);
+  }
+
+  var n1=document.getElementById('sn1');
+  var n2=document.getElementById('sn2');
+  var n3=document.getElementById('sn3');
+  if(n1) countUp(n1, 125, '+', false, 1400, 300);
+  if(n2) countUp(n2, 500, 'K+', false, 1600, 500);
+  if(n3) countUp(n3, 3, '×', false, 1000, 700);
+
+  // Roadmap cards stagger in
+  setTimeout(function(){
+    document.querySelectorAll('.rm-anim').forEach(function(el){
+      el.style.opacity='1';
+      el.style.transform='translateY(0)';
+    });
+  }, 200);
+
+});
+
+function runTimeline(){
+  // Stagger the 3 roadmap cards into view
+  [500, 950, 1400].forEach(function(delay, i){
+    setTimeout(function(){
+      var ti=document.getElementById('ti'+(i+1));
+      if(ti){ti.style.opacity='1';ti.style.transform='translateY(0)';}
+    }, delay);
+  });
+  // Trust note fades in last
+  setTimeout(function(){
+    var f=document.getElementById('tyFoot');
+    if(f) f.style.opacity='1';
+  }, 2000);
+}
+</script>
+</body>
+</html>
