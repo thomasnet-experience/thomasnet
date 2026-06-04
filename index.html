@@ -660,19 +660,22 @@ function buildPills(){
 function updChar(el){var c=document.getElementById('charCount');if(c)c.textContent=el.value.length+' / 600';}
 function submitForm(){
   var fn=(document.getElementById('fName')||{}).value||'',ln=(document.getElementById('lName')||{}).value||'',em=(document.getElementById('email')||{}).value||'',ph=(document.getElementById('phone')||{}).value||'',co=(document.getElementById('company')||{}).value||'',rev=(document.getElementById('revenue')||{}).value||'';
-  var web=(document.getElementById('website')||{}).value||'';if(!fn.trim()||!ln.trim()||!em.trim()||!co.trim()||!rev||!web.trim()){alert('Please fill in all required fields.');return;}
+  var web=(document.getElementById('website')||{}).value||'',prod=(document.getElementById('prodServices')||{}).value||'',chall=(document.getElementById('challenges')||{}).value||'',goals=(document.getElementById('goals')||{}).value||'';
+  if(!fn.trim()||!ln.trim()||!em.trim()||!co.trim()||!rev||!web.trim()){alert('Please fill in all required fields.');return;}
   var phRaw=ph.replace(/[^\d]/g,'');if(phRaw.length===11&&phRaw[0]==='1')phRaw=phRaw.slice(1);if(phRaw.length<10){var pi=document.getElementById('phone');if(pi)pi.classList.add('err');var hi=document.getElementById('phoneHint');if(hi){hi.textContent='Please enter a valid 10-digit number';hi.className='field-hint err';}return;}
+  var keys=Object.keys(sel).filter(function(k){return sel[k];});var challengesList=keys.map(function(k){return LABELS[k];}).join(', ')||'General marketing';
+  var auto=[].slice.call(document.querySelectorAll('.svc-pill.auto')).map(function(b){return b.textContent;});
   document.getElementById('tyName').textContent=fn.trim();
   document.getElementById('tyCompany').textContent=co.trim();
   document.getElementById('tyContact').textContent=fn.trim()+' '+ln.trim();
-  var keys=Object.keys(sel).filter(function(k){return sel[k];});
-  document.getElementById('tyChallenges').textContent=keys.map(function(k){return LABELS[k];}).join(', ')||'General marketing';
-  var auto=[].slice.call(document.querySelectorAll('.svc-pill.auto')).map(function(b){return b.textContent;});
+  document.getElementById('tyChallenges').textContent=challengesList;
   document.getElementById('tyServices').textContent=auto.slice(0,3).join(', ')+(auto.length>3?', …':'');
   document.getElementById('formFlow').style.display='none';
   document.getElementById('tyState').style.display='block';
   document.querySelector('.right').scrollTop=0;
-  runTimeline();
+  var payload={timestamp:new Date().toLocaleString(),firstName:fn.trim(),lastName:ln.trim(),email:em.trim(),phone:phRaw,company:co.trim(),revenue:rev,website:web.trim(),productServices:prod.trim(),challenges:challengesList,goals:goals.trim(),selectedServices:auto.join(', ')};
+  var APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbwtHQd4qkP0WsTKiyIEqYSBrNAHcVrLOo4w3GLIxgDppmTlUKNP-MFsa3l6KjVADZ582Q/exec';
+  fetch(APPS_SCRIPT_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),mode:'no-cors'}).then(function(){console.log('Data sent to Google Sheets');runTimeline();}).catch(function(err){console.error('Error:',err);runTimeline();});
 }
 // ── ON-LOAD ANIMATIONS ──
 window.addEventListener('DOMContentLoaded', function(){
