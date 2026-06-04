@@ -453,7 +453,7 @@ a{text-decoration:none;color:inherit}
         </div>
 
       </div>
-      <button class="btn-submit" onclick="submitForm()">
+      <button class="btn-submit" id="submitBtn">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
         Submit — Get My Free Consultation
       </button>
@@ -694,11 +694,14 @@ function submitForm(){
   var servicesList=auto.join(', ')||'Not specified';
 
   // Update thank you page
-  document.getElementById('tyName').textContent=fn.trim();
-  document.getElementById('tyCompany').textContent=co.trim();
-  document.getElementById('tyContact').textContent=fn.trim()+' '+ln.trim();
-  document.getElementById('tyChallenges').textContent=challengesList;
-  document.getElementById('tyServices').textContent=auto.slice(0,3).join(', ')+(auto.length>3?', …':'');
+  var tyName=document.getElementById('tyName');
+  if(tyName)tyName.textContent=fn.trim();
+  var tyCompany=document.getElementById('tyCompany');
+  if(tyCompany)tyCompany.textContent=co.trim();
+  var tyChallenges=document.getElementById('tyChallenges');
+  if(tyChallenges)tyChallenges.textContent=challengesList;
+  var tyServices=document.getElementById('tyServices');
+  if(tyServices)tyServices.textContent=auto.slice(0,3).join(', ')+(auto.length>3?', …':'');
 
   // Show thank you state
   document.getElementById('formFlow').style.display='none';
@@ -738,6 +741,9 @@ function submitForm(){
 }
 // ── ON-LOAD ANIMATIONS ──
 window.addEventListener('DOMContentLoaded', function(){
+  // Add submit button event listener
+  var submitBtn=document.getElementById('submitBtn');
+  if(submitBtn){submitBtn.addEventListener('click',function(){submitForm();});}
 
   // Stat counters
   function countUp(el, target, suffix, isFloat, duration, delay){
