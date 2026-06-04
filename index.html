@@ -708,20 +708,19 @@ function submitForm(){
   document.getElementById('tyState').style.display='block';
   document.querySelector('.right').scrollTop=0;
 
-  // Prepare data for Google Sheets
+  // Prepare data for Google Sheets (field names must match Apps Script)
   var payload={
-    Timestamp:new Date().toLocaleString(),
-    'First Name':fn.trim(),
-    'Last Nime':ln.trim(),
-    Email:em.trim(),
-    Phone:phRaw,
-    Company:co.trim(),
-    Revenue:rev,
-    Website:web.trim(),
-    'Product/Services':prod.trim(),
-    Challenges:challengesList,
-    Goals:goals.trim(),
-    'Recommended Services':servicesList
+    timestamp:new Date().toLocaleString(),
+    firstName:fn.trim(),
+    lastName:ln.trim(),
+    email:em.trim(),
+    phone:phRaw,
+    company:co.trim(),
+    revenue:rev,
+    website:web.trim(),
+    productServices:prod.trim(),
+    challenges:challengesList,
+    goals:goals.trim()
   };
 
   // Send to Google Sheets
