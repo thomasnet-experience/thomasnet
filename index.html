@@ -659,23 +659,82 @@ function buildPills(){
 }
 function updChar(el){var c=document.getElementById('charCount');if(c)c.textContent=el.value.length+' / 600';}
 function submitForm(){
-  var fn=(document.getElementById('fName')||{}).value||'',ln=(document.getElementById('lName')||{}).value||'',em=(document.getElementById('email')||{}).value||'',ph=(document.getElementById('phone')||{}).value||'',co=(document.getElementById('company')||{}).value||'',rev=(document.getElementById('revenue')||{}).value||'';
-  var web=(document.getElementById('website')||{}).value||'',prod=(document.getElementById('prodServices')||{}).value||'',chall=(document.getElementById('challenges')||{}).value||'',goals=(document.getElementById('goals')||{}).value||'';
-  if(!fn.trim()||!ln.trim()||!em.trim()||!co.trim()||!rev||!web.trim()){alert('Please fill in all required fields.');return;}
-  var phRaw=ph.replace(/[^\d]/g,'');if(phRaw.length===11&&phRaw[0]==='1')phRaw=phRaw.slice(1);if(phRaw.length<10){var pi=document.getElementById('phone');if(pi)pi.classList.add('err');var hi=document.getElementById('phoneHint');if(hi){hi.textContent='Please enter a valid 10-digit number';hi.className='field-hint err';}return;}
-  var keys=Object.keys(sel).filter(function(k){return sel[k];});var challengesList=keys.map(function(k){return LABELS[k];}).join(', ')||'General marketing';
+  // Get form values
+  var fn=(document.getElementById('fName')||{}).value||'';
+  var ln=(document.getElementById('lName')||{}).value||'';
+  var em=(document.getElementById('email')||{}).value||'';
+  var ph=(document.getElementById('phone')||{}).value||'';
+  var co=(document.getElementById('company')||{}).value||'';
+  var rev=(document.getElementById('revenue')||{}).value||'';
+  var web=(document.getElementById('website')||{}).value||'';
+  var prod=(document.getElementById('product')||{}).value||'';
+  var goals=(document.getElementById('goals')||{}).value||'';
+
+  // Validate required fields
+  if(!fn.trim()||!ln.trim()||!em.trim()||!co.trim()||!rev||!web.trim()){
+    alert('Please fill in all required fields.');
+    return;
+  }
+
+  // Validate phone
+  var phRaw=ph.replace(/[^\d]/g,'');
+  if(phRaw.length===11&&phRaw[0]==='1')phRaw=phRaw.slice(1);
+  if(phRaw.length<10){
+    var pi=document.getElementById('phone');
+    if(pi)pi.classList.add('err');
+    return;
+  }
+
+  // Get selected challenges
+  var keys=Object.keys(sel).filter(function(k){return sel[k];});
+  var challengesList=keys.map(function(k){return LABELS[k];}).join(', ')||'Not specified';
+
+  // Get selected services (checked pills)
   var auto=[].slice.call(document.querySelectorAll('.svc-pill.auto')).map(function(b){return b.textContent;});
+  var servicesList=auto.join(', ')||'Not specified';
+
+  // Update thank you page
   document.getElementById('tyName').textContent=fn.trim();
   document.getElementById('tyCompany').textContent=co.trim();
   document.getElementById('tyContact').textContent=fn.trim()+' '+ln.trim();
   document.getElementById('tyChallenges').textContent=challengesList;
   document.getElementById('tyServices').textContent=auto.slice(0,3).join(', ')+(auto.length>3?', …':'');
+
+  // Show thank you state
   document.getElementById('formFlow').style.display='none';
   document.getElementById('tyState').style.display='block';
   document.querySelector('.right').scrollTop=0;
-  var payload={timestamp:new Date().toLocaleString(),firstName:fn.trim(),lastName:ln.trim(),email:em.trim(),phone:phRaw,company:co.trim(),revenue:rev,website:web.trim(),productServices:prod.trim(),challenges:challengesList,goals:goals.trim(),selectedServices:auto.join(', ')};
+
+  // Prepare data for Google Sheets
+  var payload={
+    Timestamp:new Date().toLocaleString(),
+    'First Name':fn.trim(),
+    'Last Nime':ln.trim(),
+    Email:em.trim(),
+    Phone:phRaw,
+    Company:co.trim(),
+    Revenue:rev,
+    Website:web.trim(),
+    'Product/Services':prod.trim(),
+    Challenges:challengesList,
+    Goals:goals.trim(),
+    'Recommended Services':servicesList
+  };
+
+  // Send to Google Sheets
   var APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbwtHQd4qkP0WsTKiyIEqYSBrNAHcVrLOo4w3GLIxgDppmTlUKNP-MFsa3l6KjVADZ582Q/exec';
-  fetch(APPS_SCRIPT_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),mode:'no-cors'}).then(function(){console.log('Data sent to Google Sheets');runTimeline();}).catch(function(err){console.error('Error:',err);runTimeline();});
+  
+  fetch(APPS_SCRIPT_URL,{
+    method:'POST',
+    body:JSON.stringify(payload),
+    mode:'no-cors'
+  }).then(function(response){
+    console.log('✓ Data sent successfully');
+    runTimeline();
+  }).catch(function(err){
+    console.error('Error sending data:',err);
+    runTimeline();
+  });
 }
 // ── ON-LOAD ANIMATIONS ──
 window.addEventListener('DOMContentLoaded', function(){
